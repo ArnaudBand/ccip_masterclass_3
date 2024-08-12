@@ -9,4 +9,8 @@ remappings = [
     'forge-std=lib/forge-std/src'
 ]
 
+[rpc_endpoints]
+arbitrumSepolia = "${ARBITRUM_SEPOLIA_RPC_URL}"
+ethereumSepolia = "${ETHEREUM_SEPOLIA_RPC_URL}"
+
 # See more config options https://github.com/foundry-rs/foundry/blob/master/crates/config/README.md#all-options
