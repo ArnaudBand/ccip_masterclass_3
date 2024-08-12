@@ -33,7 +33,7 @@ contract XNFT is
         LINK
     }
 
-    error InvalidRouter(address router);
+    error XNFT__InvalidRouter(address router);
     error OnlyOnArbitrumSepolia();
     error NotEnoughBalanceForFees(
         uint256 currentBalance,
@@ -91,7 +91,7 @@ contract XNFT is
 
     modifier onlyRouter() {
         if (msg.sender != address(i_ccipRouter))
-            revert InvalidRouter(msg.sender);
+            revert XNFT__InvalidRouter(msg.sender);
         _;
     }
 
@@ -124,7 +124,7 @@ contract XNFT is
         address linkTokenAddress,
         uint64 currentChainSelector
     ) ERC721("Cross Chain NFT", "XNFT") {
-        if (ccipRouterAddress == address(0)) revert InvalidRouter(address(0));
+        if (ccipRouterAddress == address(0)) revert XNFT__InvalidRouter(address(0));
         i_ccipRouter = IRouterClient(ccipRouterAddress);
         i_linkToken = LinkTokenInterface(linkTokenAddress);
         i_currentChainSelector = currentChainSelector;
