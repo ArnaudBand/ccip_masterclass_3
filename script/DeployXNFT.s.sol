@@ -12,15 +12,11 @@ contract DeployXNFT is Script {
         vm.startBroadcast(deployerPrivateKey);
 
         HelpConfig helpConfig = new HelpConfig();
-        
+
         // Directly access the struct components
         (address ccipRouterAddress, address linkTokenAddress, uint64 chainSelector) = helpConfig.activeConfig();
 
-        XNFT xNft = new XNFT(
-            ccipRouterAddress,
-            linkTokenAddress,
-            chainSelector
-        );
+        XNFT xNft = new XNFT(ccipRouterAddress, linkTokenAddress, chainSelector);
 
         console.log("XNFT deployed to ", address(xNft));
 
